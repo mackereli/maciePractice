@@ -26,9 +26,6 @@
             {{blog.tag}}
 
     </p>
-
-    <!-- The whole next section is for comments ON blog posts -->
-    <!-- If you are using this as a template, you'll probably delete the whole comment section -->
     <a href="/comment/new/{{blog.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
 
     {% if comments %}
@@ -50,9 +47,8 @@
     {% else %}
         <h1 class="display-5">No Comments</h1>
     {% endif %}
-    <!-- end of the comment section! -->
 {% else %}
-
+    <h1 class="display-5">No Blog</h1>
 {% endif %}
 
 {% endblock %}

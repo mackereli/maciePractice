@@ -1,5 +1,5 @@
 # These routes are an example of how to use data, forms and routes to create
-# a forum where a blogs and comments on those blogs can be
+# a blog where a blogs and comments on those blogs can be
 # Created, Read, Updated or Deleted (CRUD)
 
 from app import app
@@ -189,7 +189,7 @@ def commentEdit(commentID):
     if current_user != editComment.author:
         flash("You can't edit a comment you didn't write.")
         return redirect(url_for('blog',blogID=editComment.blog.id))
-    blog = Blog.objects.get(id=editComment.blog.id)
+    blog = Bog.objects.get(id=editComment.blog.id)
     form = CommentForm()
     if form.validate_on_submit():
         editComment.update(

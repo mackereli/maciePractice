@@ -27,15 +27,15 @@ window pane. Then open a new terminal by going to the Terminal menu at the top o
 
 ##### Create a Python Environment for your project #####
 1) in the terminal you should see (base) at the begining of the command prompt.
-    this means you have anaconda installed and are using the "base" environment. If you
+    this means you have anaconda installed, the python extension installed, and are using the "base" environment. If you
     don't see base,  click the view menu, then go to the Comppand Palettte then search for 
     "python: Select Interpreter". Choose the one that is called "base".  Hopefully you should
-    now see (base)
+    now see (base). If you don't, there might be a little pop up that says "
 2) type these command to create a new environment for this project. Replace <yourProjectName> 
     with the name of your project.
 
-    conda create --name NEWNAME python=3.11
-    conda activate NEWNAME
+    conda create --name MyCapstone python=3
+    conda activate MyCapstone
 
 3) now you want to set this to your default environment for this project. go to the View menu 
     above and choose Command Palette...
@@ -56,7 +56,7 @@ window pane. Then open a new terminal by going to the Terminal menu at the top o
 
 # Type this command
 python -m pip
-Mac users: python3 -m pip
+schMac users: python3 -m pip
 
 # It should report back to you how to use pip. If it doesn't understand 'pip' as a 
 # command then you have a bigger problem. Did you install Anaconda? Did you click the checkboxes in the instructions
@@ -69,12 +69,12 @@ Mac users: python3 -m pip
 # If it is already installed lets make sure it is updated.
 
 python -m pip install --upgrade pip
-(Mac users, type: python3 -m pip install --upgrade pip)
+(Mac users, ugh, type: python3 -m pip install --upgrade pip)
 
 # The next command will install all the packages that are listed in the "requirements.txt" file
 
 python -m pip install -r requirements.txt
-(Mac users will type: python3 -m pip install -r requirements.txt)
+(schMac users will type: python3 -m pip install -r requirements.txt)
 
 # if you get an error READ IT. If it says you don't have access you need to use the '--user'
 # option.  See the command below.  You can add --user to any pip command.
@@ -100,11 +100,20 @@ TEST YOUR PROGRESS:
         (if you get an access error use --user after install)
 4) run main.py again.  Keep doing this until you don't get module errors. 
 
+### Open Street Maps ###
+Add your email address to the secrets.py file
+
 ### Run Main.py ###
 1) Click the main.py file
 2) Click the run triangle
 3) Pray to the techno-gods
 4) Hopefully, your site will start and be avalable at https://127.0.0.1:5000
+
+Now you need to install the initial set of roles.  Click this link to make that happen.
+https://127.0.0.1:5000/makeroles
+
+to check to see if it worked, click this:
+https://127.0.0.1:5000/listroles
 
 You should be ready to go!
 

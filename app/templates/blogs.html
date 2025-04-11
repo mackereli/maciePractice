@@ -1,21 +1,19 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
 
-<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
 <div class="row">
-    <div class="col">
-        <h1 class="display-5">Any Feedback for us?</h1>
+    <div class="col-4">
+        <h1 class="display-1">All Blogs</h1>
     </div>
     <div class="col">
-        <a href="/blog/new" class="btn btn-primary btn-sm mt-5" role="button">Add a post here</a>
+        <a href="/blog/new" class="btn btn-primary btn-sm mt-5" role="button">New Blog</a>
     </div>
 </div>
 
 {% if blogs %}
     {% for blog in blogs %}
-        <div class="container row border-bottom">
+        <div class="row border-bottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
                 <h3 class="display-5">Date</h3>
@@ -40,7 +38,7 @@
         </div>
     {% endfor %}
 {% else %}
-
+    <h1>No Blogs</h1>
 {% endif %}
 
 {% endblock %}
