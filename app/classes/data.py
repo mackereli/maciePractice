@@ -33,7 +33,8 @@ class User(UserMixin, Document):
     email = EmailField()
     image = FileField()
     prononuns = StringField()
-    role = StringField('Role', choices =[("Teacher","Teacher"),("Student","Student")])
+    role = StringField()
+    age = IntField()
 
 
     meta = {
