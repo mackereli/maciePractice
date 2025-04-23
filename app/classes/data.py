@@ -119,7 +119,7 @@ class Reply(Document):
     }
 
 class Slime(Document):
-    author = ReferenceField("user",reverse_delete_rule=CASCADE)
+    author = ReferenceField("User",reverse_delete_rule=CASCADE)
     sleep_time = IntField()
     time_frame = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
