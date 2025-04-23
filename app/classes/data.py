@@ -117,3 +117,14 @@ class Reply(Document):
     meta = {
         'ordering': ['-createdate']
     }
+
+class Slime(Document):
+    author = ReferenceField("User",reverse_delete_rule=CASCADE)
+    sleep_time = IntField()
+    time_frame = StringField()
+    create_date = DateTimeField(default=dt.datetime.utcnow)
+    modify_date = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
