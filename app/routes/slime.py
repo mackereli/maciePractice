@@ -25,8 +25,8 @@ def slimeNew():
         newSlime = Slime(
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
-            sleep_time = form.subject.data,
-            time_frame = form.content.data,
+            sleep_time = form.sleep_time.data,
+            time_frame = form.time_frame.data,
             author = current_user.id,
             # This sets the modifydate to the current datetime.
             modify_date = dt.datetime.utcnow
@@ -40,7 +40,7 @@ def slimeNew():
         # to send them to that blog. url_for takes as its argument the function name
         # for that route (the part after the def key word). You also need to send any
         # other values that are needed by the route you are redirecting to.
-        return redirect(url_for('blog',blogID=newSlime.id))
+        return redirect(url_for('slime',slimeID=newSlime.id))
 
     # if form.validate_on_submit() is false then the user either has not yet filled out
     # the form or the form had an error and the user is sent to a blank form. Form errors are 

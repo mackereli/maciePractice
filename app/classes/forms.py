@@ -52,3 +52,4 @@ class ReplyForm(FlaskForm):
 class SlimeForm(FlaskForm):
     sleep_time = IntegerField('What time do you go to bed', validators=[NumberRange(min=1, max=12, message = 'Enter a number between 1 and 12')])
     time_frame = SelectField('AM or PM', choices=[('AM'), ('PM')])
+    submit = SubmitField('Post')
