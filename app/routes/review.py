@@ -217,3 +217,5 @@ def replyDelete(replyID):
     flash('The reply was deleted.')
     theseReplies = Reply.objects(Q(review=deleteReply.review) & Q(outer=True) & Q(dFromOuter=0))
     return redirect(url_for('review',reviewID=deleteReply.review.id, replies=theseReplies)) 
+
+    #sdfsdf
