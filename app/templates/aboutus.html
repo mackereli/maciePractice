@@ -2,43 +2,52 @@
 
 {% extends 'base.html' %}
 {% block body %}
-    <!-- Navbar (Same as Home Page) -->
+
 
 
   <!-- Container for Body Content -->
-  <div class="container mt-4 bg-info-subtle">
-    <h1 class="text-center mb-4">About Us</h1>
-    <!-- Simple Grid for Team Members -->
-    <div class="row">
+  <header class="bg-info text-white bg-opacity-50 p-2 py-5 mb-5">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold">About Our Team</h1>
+      <p class="lead">Meet the individuals behind this project</p>
+    </div>
+  </header>
+
+  <!-- Team Section -->
+  <main class="container">
+    <div class="row justify-content-center g-4">
       <!-- Team Member 1 -->
-      <div class="col-md-4">
-        <div class="team-member border border-5 rounded-4 text-center">
-          <img src="" width="250" height="350" alt="Team Member 1">
-          <h3>Josephine and Abigayl</h3>
-          <p class="text-muted">Front End </p>
-          <p>About us...</p>
+      <div class="col-md-5 col-lg-4">
+        <div class="card border-2 rounded-4 h-100 text-center shadow-sm">
+          <div class="card-body p-4">
+            <img src="{{ url_for('static', filename='abijose.jpeg') }}" class="img-fluid rounded-3 mb-3" alt="Team Member 1">
+            <h3 class="card-title">Josephine and Abigayl</h3>
+            <p class="text-muted">Front End Developers</p>
+            <p class="card-text">Abigayl had a friend crush on Josephine and plotted for 17 years to become great friends.</p>
+          </div>
         </div>
       </div>
-      <!-- Team Member 2 -->
-      <div class="col-md-4">
-        <div class="team-member border border-5 rounded-4 text-center">
-          <img src="/images2/IMG_3724.jpeg" width="250" height="350" alt="Team Member 2">
-          <h3>Macie and Jonah</h3>
-          <p class="text-muted">Back End</p>
-          <p>About us...</p>
+      
+      <!-- Team Members 2 -->
+      <div class="col-md-5 col-lg-4">
+        <div class="card border-2 rounded-4 h-100 text-center shadow-sm">
+          <div class="card-body p-4">
+            <img src="{{ url_for('static', filename='macnah.jpg') }}" class="img-fluid rounded-3 mb-3" alt="Team Member 2">
+            <h3 class="card-title">Macie and Jonah</h3>
+            <p class="text-muted">Back End Developers</p>
+            <p class="card-text">Met in paidea and Macie plotted to steal Jonah's heart for 3 years straight.</p>
+          </div>
         </div>
-      </div>
-      <!-- Team Member 3 (You) -->
-      <!-- <div class="col-md-4">
-        <div class="team-member border border-5 rounded-4 text-center">
-          <img src="https://via.placeholder.com/150" width="250" height="350" alt="You">
-          <h3>Your Name</h3>
-          <p class="text-muted">Developer</p>
-          <p>You are the developer bringing this project to life!</p>
-        </div> -->
       </div>
     </div>
-  </div>
+    
+    <!-- Team Description -->
+    <section class="row mt-5">
+      <div class="col-12 text-center">
+        <h2 class="mb-4">Our Story</h2>
+        <p class="lead mx-auto" style="max-width: 800px;">
+          We all sit next to each other and forced to work together... </p>
+      </div>
  
 
 {% endblock %}
