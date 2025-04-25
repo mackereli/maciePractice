@@ -13,7 +13,7 @@ class ProfileForm(FlaskForm):
     lname = StringField('Last Name', validators=[DataRequired()]) 
     image = FileField("Image") 
     role = SelectField('Role',choices=[("Teacher","Teacher"),("Student","Student")])
-    grade = IntegerField('Grade: ', validators[DataRequired()])
+    grade = IntegerField('Grade', validators=[DataRequired()])
     submit = SubmitField('Post')
     
 
@@ -54,10 +54,10 @@ class SlimeForm(FlaskForm):
     time_frame = SelectField('AM or PM', choices=[('AM'), ('PM')])
 
 
-class clubForm(FLaskForm):
+class ClubForm(FlaskForm):
     name = StringField('Club Name: ', validators=[DataRequired()])
     advisor = StringField('Advisor: ',validators=[DataRequired()])
     description = TextAreaField('Description: ', validators=[DataRequired()])
-    meeting_day = StringField('Meeting Day(s): ' validators=[DataRequired()])
-    meeting_time = StringField('Meeting Time: ', validators = [DataRequired()])
+    meeting_day = StringField('Meeting Day(s): ', validators=[DataRequired()])
+    meeting_time = SelectField('Advisory, lunch, or after school:', choices=[('Advisory'), ('Lunch'), ('After School')])
     submit = SubmitField('Add club')

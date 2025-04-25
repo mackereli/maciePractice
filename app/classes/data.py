@@ -136,8 +136,8 @@ class Club(Document):
     description = StringField()
     meeting_day = StringField()
     meeting_time = IntField()
+    time_frame1 =(StringField)
     tag = StringField()
-    grade = ReferenceField('User')
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
 
