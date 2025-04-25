@@ -12,7 +12,7 @@ copy this one and then edit it. -->
         <form method=post>
             {{ form.hidden_tag() }}
             
-            {{ form.sleep__time.label }} <br>
+            {{ form.sleep_time.label }} <br>
             {{ form.sleep_time(size=64) }}
             <!--List the errors for this field-->
             {% for error in form.sleep_time.errors %}
