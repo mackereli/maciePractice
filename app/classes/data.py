@@ -128,3 +128,19 @@ class Slime(Document):
     meta = {
         'ordering': ['-createdate']
     }
+
+class Club(Document):
+    author = ReferenceField("User",reverse_delete_rule=CASCADE)
+    name = StringField()
+    advisor = StringField()
+    description = StringField()
+    meeting_day = StringField()
+    meeting_time = IntField()
+    tag = StringField()
+    grade = ReferenceField('User')
+    create_date = DateTimeField(default=dt.datetime.utcnow)
+    modify_date = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
