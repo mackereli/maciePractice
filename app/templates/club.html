@@ -1,0 +1,27 @@
+<!-- This is a blank template.  You can copy this to make a new template page. -->
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if club %}
+    {% if club.author == current_user %}
+    <a data-toggle="tooltip" data-placement="top" title="Delete Club" href="/club/delete/{{club.id}}">
+        <img width="40" class="bottom-image" src="/static/delete.png">
+    </a>
+    <a data-toggle="tooltip" data-placement="top" title="Edit Club" href="/club/edit/{{club.id}}">
+        <img width="40" class="bottom-image" src="/static/edit.png">
+    </a>
+    {% endif %}
+
+
+    <h1 class="display-5">{{club.name}}</h1>
+    <p class="fs-3 text-break">
+            description: {{club.description}} <br>
+            club advisor: {{club.advisor}} <br>
+            meeting day(s): {{club.meeting_day}} <br>
+            meeting time: {{club.meeting_time}} <br>
+            meeting place: {{club.meeting_place}} 
+
+{% endif %}
+{% endblock %}

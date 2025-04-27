@@ -60,4 +60,5 @@ class ClubForm(FlaskForm):
     description = TextAreaField('Description: ', validators=[DataRequired()])
     meeting_day = StringField('Meeting Day(s): ', validators=[DataRequired()])
     meeting_time = SelectField('Advisory, lunch, or after school:', choices=[('Advisory'), ('Lunch'), ('After School')])
+    meeting_place = StringField('Meeting Place', validators=[DataRequired()])
     submit = SubmitField('Add club')
