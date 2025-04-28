@@ -1,30 +1,35 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<div class="bg-info text-white bg-opacity-50 p-2 py-5 mb-5 container text-center rounded-3 shadow">
+    <h1 class="display-4 fw-bold">Register</h1>
+</div>
 
-    <h1>Register</h1>
-    <!--enctype is needed to upload files -->
-    <form action="" method="post" enctype="multipart/form-data">
+<div class="container" style="max-width: 600px;">
+    <form action="" method="post" enctype="multipart/form-data" class="p-4 border rounded-3 shadow-sm bg-light">
         {{ form.hidden_tag() }}
-        <p>
-            {{ form.fname.label }}<br>
-            {{ form.fname(size=64) }}<br>
+        
+        <p class="mb-3">
+            <label class="form-label">{{ form.fname.label }}</label><br>
+            {{ form.fname(class="form-control") }}
             {% for error in form.fname.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span class="text-danger small">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>
-            {{ form.lname.label }}<br>
-            {{ form.lname() }}<br>
+        
+        <p class="mb-3">
+            <label class="form-label">{{ form.lname.label }}</label><br>
+            {{ form.lname(class="form-control") }}
             {% for error in form.lname.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span class="text-danger small">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>
-            {{ form.role.label }}<br>
-            {{ form.role() }}<br>
+        
+        <p class="mb-3">
+            <label class="form-label">{{ form.role.label }}</label><br>
+            {{ form.role(class="form-select") }}
             {% for error in form.role.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span class="text-danger small">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
@@ -32,21 +37,32 @@
             {{ form.grade() }}<br>
             {% for error in form.grade.errors %}
             <span style="color: red;">[{{ error }}]</span>
+        
+        <p class="mb-3">
+            <label class="form-label">{{ form.age.label }}</label><br>
+            {{ form.age(class="form-control") }}
+            {% for error in form.age.errors %}
+                <span class="text-danger small">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>
-            {{ form.image.label }}<br>
+        
+        <p class="mb-3">
+            <label class="form-label">{{ form.image.label }}</label><br>
             {% if current_user.image %}
-                <img class="img-thumbnail" width="100" src="data:image;base64,{{base64encode(current_user.image.read())}}"> <br>
+                <img class="img-thumbnail mb-2" width="100" src="data:image;base64,{{base64encode(current_user.image.read())}}"> <br>
             {% else %}
-                <img class="img-thumbnail" width = "100" src="/static/lion.png">
+                <img class="img-thumbnail mb-2" width="100" src="/static/lion.png">
             {% endif %} <br>
-            {{ form.image() }}<br>
+            {{ form.image(class="form-control") }}
             {% for error in form.image.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span class="text-danger small">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        
+        <p>
+            {{ form.submit(class="btn btn-primary w-100") }}
+        </p>
     </form>
+</div>
 
 {% endblock %}
