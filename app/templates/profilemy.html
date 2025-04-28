@@ -1,29 +1,6 @@
 {% extends 'base.html' %}
-
 {% block body %}
-<h1 class="display-1">
-    My Profile
-    <a href="/myprofile/edit">
-        <img width="40" src="/static/edit.png">
-    </a>
-</h1>
-<div class="row">
-    <div class="col-2">
-        {% if current_user.image %}
-            <img class="img-thumbnail img-fluid" src="data:image;base64,{{base64encode(current_user.image.read())}}"> <br>
-        {% else %}
-            <img class="img-thumbnail" width = "100" src="/static/lion.png">
-        {% endif %} 
-    </div>
-    <div class="col display-5">
-        {% if current_user.fname and current_user.lname %}
-            Name: {{current_user.fname}}  {{current_user.lname}} <br>
-        {% else %}
-            Google User Name: {{current_user.gname}} <br>
-        {% endif %}
-        Email: {{current_user.email}} <br>
-        Role: {{current_user.role}} <br>
-        Grade: {{current_user.grade}} <br>
+
 <!-- Header -->
 <header class="bg-info text-white bg-opacity-50 p-2 py-5 mb-5 shadow-sm rounded-bottom">
   <div class="container text-center">
@@ -62,7 +39,7 @@
             {% endif %}
             <div><strong>Email:</strong> {{current_user.email}}</div>
             <div><strong>Role:</strong> {{current_user.role}}</div>
-            <div><strong>Age:</strong> {{current_user.age}}</div>
+            <div><strong>Grade:</strong> {{current_user.grade}}</div>
           </div>
         </div>
       </div>
