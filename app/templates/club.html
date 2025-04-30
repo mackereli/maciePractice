@@ -5,23 +5,28 @@
 {% block body %}
 
 {% if club %}
-    {% if club.author == current_user %}
-    <a data-toggle="tooltip" data-placement="top" title="Delete Club" href="/club/delete/{{club.id}}">
-        <img width="40" class="bottom-image" src="/static/delete.png">
-    </a>
-    <a data-toggle="tooltip" data-placement="top" title="Edit Club" href="/club/edit/{{club.id}}">
-        <img width="40" class="bottom-image" src="/static/edit.png">
-    </a>
-    {% endif %}
 
 
-    <h1 class="display-5">{{club.name}}</h1>
+<header class="bg-info text-white bg-opacity-50 p-2 py-5 mb-5 shadow-sm rounded-bottom"><div class="row">
+    <div class="col-4 container text-center"> 
+        <h1 class="display-5 fw-bold">{{club.name}}</h1> 
+ </div>
+</div> </header>
+    
     <p class="fs-3 text-break">
-            description: {{club.description}} <br>
-            club advisor: {{club.advisor}} <br>
-            meeting day(s): {{club.meeting_day}} <br>
-            meeting time: {{club.meeting_time}} <br>
-            meeting place: {{club.meeting_place}} 
+            Description: {{club.description}} <br>
+            Club Advisor: {{club.advisor}} <br>
+            Meeting Day(s): {{club.meeting_day}} <br>
+            Meeting Time: {{club.meeting_time}} <br>
+            Meeting Place: {{club.meeting_place}} <br>
 
+            {% if club.author == current_user %}
+            <a data-toggle="tooltip" data-placement="top" title="Delete Club" href="/club/delete/{{club.id}}">
+                <img width="40" class="bottom-image" src="/static/delete.png">
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit Club" href="/club/edit/{{club.id}}">
+                <img width="40" class="bottom-image" src="/static/edit.png">
+            </a>
+            {% endif %}
 {% endif %}
 {% endblock %}

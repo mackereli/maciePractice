@@ -2,21 +2,20 @@
 
 {% block body %}
 
-<div class="row">
-    <div class="col-4">
-        <h1 class="display-1">All Clubs</h1>
+<header class="bg-info text-white bg-opacity-50 p-2 py-5 mb-5 shadow-sm rounded-bottom"><div class="row">
+    <div class="col-4 container text-center">
+        <h1 class="display-1 fw-bold ">All Clubs</h1>
+
     </div>
-    <div class="col">
-        <a href="/club/new" class="btn btn-primary btn-sm mt-5" role="button">New Club</a>
-    </div>
-</div>
+</div></header>
+
 
 {% if clubs %}
     {% for club in clubs %}
         <div class="row border-bottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">Date</h3>
+                <h3 class="display-5 fw-bold">Date</h3>
                 {% endif %}
 
                 <a href="/club/{{club.id}}">
@@ -25,15 +24,33 @@
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">User</h3>
+                <h3 class="display-5 fw-bold">User</h3>
                 {% endif %}
                 {{club.author.fname}} {{club.author.lname}}
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Name</h3>
+                    <h3 class="display-5 fw-bold">Name</h3>
                 {% endif %}
                 {{club.name}}
+            </div>
+            <div class = "col">
+                {% if loop.index == 1 %}
+                <h3 class="display-5 fw-bold">Day</h3>
+                {% endif %}
+                {{club.meeting_day}}
+            </div>
+            <div class = "col">
+                {% if loop.index == 1 %}
+                <h3 class="display-5 fw-bold">Time</h3>
+                {% endif %}
+                {{club.meeting_time}}
+            </div>
+            <div class = "col">
+                {% if loop.index == 1 %}
+                <h3 class="display-5 fw-bold">Place</h3>
+                {% endif %}
+                {{club.meeting_place}}
             </div>
         </div>
     {% endfor %}
