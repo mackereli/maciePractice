@@ -9,8 +9,6 @@ import datetime as dt
 from mongoengine.queryset.visitor import Q
 
 @app.route('/review/new', methods=['GET', 'POST'])
-# This means the user must be logged in to see this page
-@login_required
 # This is a function that is run when the user requests this route.
 def reviewNew():
     # This gets the form object from the form.py classes that can be displayed on the template.
@@ -53,8 +51,6 @@ def reviewNew():
 
 @app.route('/review/list')
 @app.route('/reviews')
-# This means the user must be logged in to see this page
-@login_required
 def reviewList():
     # This retrieves all of the 'blogs' that are stored in MongoDB and places them in a
     # mongoengine object as a list of dictionaries name 'blogs'.
@@ -69,8 +65,6 @@ def reviewList():
 
 
 @app.route('/review/<reviewID>')
-# This route will only run if the user is logged in.
-@login_required
 def review(reviewID):
     # retrieve the blog using the blogID
     thisReview = Review.objects.get(id=reviewID)
@@ -84,7 +78,6 @@ def review(reviewID):
     return render_template('review.html',review=thisReview, replies=theseReplies)
 
 @app.route('/review/edit/<reviewID>', methods=['GET', 'POST'])
-@login_required
 def reviewEdit(reviewID):
     editReview = Review.objects.get(id=reviewID)
     # if the user that requested to edit this blog is not the author then deny them and
@@ -122,8 +115,6 @@ def reviewEdit(reviewID):
     return render_template('reviewsform.html',form=form)
 
 @app.route('/review/delete/<reviewID>')
-# Only run this route if the user is logged in.
-@login_required
 def reviewDelete(reviewID):
     # retrieve the blog to be deleted using the blogID
     deleteReview = Review.objects.get(id=reviewID)
@@ -143,7 +134,6 @@ def reviewDelete(reviewID):
     return render_template('reviews.html',reviews=reviews)
 
 @app.route('/reply/newRev/<reviewID>', methods=['GET', 'POST'])
-@login_required
 def replyNewRev(reviewID):
     review = Review.objects.get(id=reviewID)
     form = ReplyForm()
@@ -162,7 +152,6 @@ def replyNewRev(reviewID):
     return render_template('replyform.html',form=form,review=review)
 
 @app.route('/reply/newRep/<reviewID>/<replyID>', methods=['GET', 'POST'])
-@login_required
 def replyNewRep(reviewID, replyID):
     review = Review.objects.get(id=reviewID)
     reply = Reply.objects.get(id=replyID)
@@ -184,7 +173,6 @@ def replyNewRep(reviewID, replyID):
 
 
 @app.route('/reply/edit/<replyID>', methods=['GET', 'POST'])
-@login_required
 def replyEdit(replyID):
     editReply = Reply.objects.get(id=replyID)
     if current_user != editReply.author:
@@ -205,7 +193,6 @@ def replyEdit(replyID):
     return render_template('replyform.html',form=form,review=review)   
 
 @app.route('/reply/delete/<replyID>')
-@login_required
 def replyDelete(replyID): 
     deleteReply = Reply.objects.get(id=replyID)
     for reply in Reply.objects(Q(review=deleteReply.review) & Q(dFromOuter=(deleteReply.dFromOuter-1))):
