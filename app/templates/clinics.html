@@ -2,9 +2,10 @@
 
 {% block body %}
 
-<div class="row">
-    <div class="col-4">
-        <h1 class="display-1">All Clinics</h1>
+<header class="bg-info text-white p-4 mb-4">
+    <div class="container text-center">
+        <h1 class="display-4">All Clinics</h1>
+        <p class="lead">Explore the list of clinics below</p>
     </div>
     <div class="col">
         <div class="col">
@@ -13,59 +14,50 @@
     </div>
 </div>
 
-{% if clinics %}
-    {% for clinic in clinics %}
-        <div class="row border">
-            <div class="col-1 border">
-                {% if loop.index == 1 %}
-                <h3 class="display-0.5"></h3>
-                {% endif %}
-
-                <a href="/clinic/delete/{{clinic.id}}">
-                    <img width="25" class="bottom-image" src="/static/delete.png">
-                </a>
-                <a href="/clinic/edit/{{clinic.id}}">
-                    <img width="25" class="bottom-image" src="/static/edit.png">
-                </a>
-            </div>
-            <div class="col-2 border">
-                {% if loop.index == 1 %}
-                <h3 class="display-0.5">Date</h3>
-                {% endif %}
-
-                <a href="/clinic/{{clinic.id}}">
-                    {{moment(clinic.createdate).calendar()}}
-                </a>
-            </div>
-            <div class="col-2 border">
-                {% if loop.index == 1 %}
-                    <h3 class="display-0.5">Name</h3>
-                {% endif %}
-                {{clinic.name}}
-            </div>
-            <div class="col-2 border">
-                {% if loop.index == 1 %}
-                    <h3 class="display-0.5">Address</h3>
-                {% endif %}
-                {{clinic.streetAddress}} <br>
-                {{clinic.city}}, {{clinic.sate}}  {{clinic.zip}}
-            </div>
-            <div class="col-2 border">
-                {% if loop.index == 1 %}
-                    <h3 class="display-0.5">Description</h3>
-                {% endif %}
-                {{clinic.description}}
-            </div>
-            <div class="col-3 border">
-                {% if loop.index == 1 %}
-                    <h3 class="display-0.5">lat/lon</h3>
-                {% endif %}
-                {{clinic.lat}}/{{clinic.lon}}
-            </div>
+    {% if clinics %}
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Actions</th>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Description</th>
+                        <th>Lat/Lon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for clinic in clinics %}
+                        <tr>
+                            <td>
+                                <a href="/clinic/delete/{{clinic.id}}" title="Delete Clinic">
+                                    <img width="25" src="/static/delete.png" alt="Delete">
+                                </a>
+                                <a href="/clinic/edit/{{clinic.id}}" title="Edit Clinic">
+                                    <img width="25" src="/static/edit.png" alt="Edit">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/clinic/{{clinic.id}}">
+                                    {{moment(clinic.createdate).calendar()}}
+                                </a>
+                            </td>
+                            <td>{{clinic.name}}</td>
+                            <td>
+                                {{clinic.streetAddress}}<br>
+                                {{clinic.city}}, {{clinic.sate}} {{clinic.zip}}
+                            </td>
+                            <td>{{clinic.description}}</td>
+                            <td>{{clinic.lat}}/{{clinic.lon}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
-    {% endfor %}
-{% else %}
-    <h1>No Clinics</h1>
-{% endif %}
+    {% else %}
+        <h3 class="text-center text-danger">No Clinics Found</h3>
+    {% endif %}
+</div>
 
 {% endblock %}
