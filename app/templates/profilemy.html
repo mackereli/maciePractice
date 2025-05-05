@@ -13,11 +13,9 @@
   </div>
 </header>
 
-<!-- Profile Section -->
 <div class="container">
   <div class="row justify-content-center bg-white rounded-3 p-4 shadow-sm mx-auto" style="max-width: 1000px;">
     
-    <!-- Profile Image -->
     <div class="col-md-3 text-center mb-4 mb-md-0">
       {% if current_user.image %}
           <img class="img-thumbnail img-fluid shadow-sm" src="data:image;base64,{{base64encode(current_user.image.read())}}"> <br>
@@ -26,7 +24,6 @@
       {% endif %}
     </div>
 
-    <!-- Profile Information -->
     <div class="col-md-9">
       <div class="display-5">
         <h1 class="display-6 fw-lighter text-center mb-4 text-secondary">Profile Information</h1>
