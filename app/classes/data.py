@@ -134,9 +134,27 @@ class Club(Document):
     name = StringField()
     advisor = StringField()
     description = StringField()
+    meeting_place = StringField()
     meeting_day = StringField()
     meeting_time = StringField()
+    members = ListField(ReferenceField('User'))
+    create_date = DateTimeField(default=dt.datetime.utcnow)
+    modify_date = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class Sport(Document):
+    author = ReferenceField("User", reverse_delete_rule=CASCADE)
+    name = StringField()
+    coach = StringField()
+    description = StringField()
     meeting_place = StringField()
+    meeting_day = StringField()
+    meeting_time1 = IntField()
+    meeting_time2 = IntField()
+    time_frame = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
 

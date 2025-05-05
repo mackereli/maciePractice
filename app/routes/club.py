@@ -30,6 +30,7 @@ def clubNew():
             description = form.description.data,
             meeting_day = form.meeting_day.data,
             meeting_time = form.meeting_time.data,
+            meeting_place = form.meeting_place.data,
 
             author = current_user.id,
             # This sets the modifydate to the current datetime.
@@ -139,4 +140,19 @@ def clubDelete(clubID):
     # Retrieve all of the remaining clubs so that they can be listed.
     clubs = Club.objects()  
     # Send the user to the list of remaining clubs.
-    return render_template('clubs.html',clubs=clubs)
+    return render_template('clubs.html',clubs=clubs) 
+
+@app.route('/club/join/<clubID>', methods=["POST"])
+@login_required
+def joinClub(clubID):
+    club = Club.objects.get(id=clubID)
+
+    # Prevent duplicate joining
+    if current_user not in club.members:
+        club.members.append(current_user)
+        club.save()
+        flash('You have successfully joined the club.')
+    else:
+        flash('You already joined this club.')
+
+    return redirect(url_for('club', clubID=clubID))

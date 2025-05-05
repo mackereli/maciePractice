@@ -51,7 +51,8 @@ class ReplyForm(FlaskForm):
 
 class SlimeForm(FlaskForm):
     sleep_time = IntegerField('What time do you go to bed', validators=[NumberRange(min=1, max=12, message = 'Enter a number between 1 and 12')])
-    time_frame = SelectField('AM or PM', choices=[('AM'), ('PM')])
+    time_frame = SelectField('AM or PM', choices=[('AM'), ('PM')])  
+    submit = SubmitField("Enter Slime")
 
 
 class ClubForm(FlaskForm):
@@ -60,5 +61,14 @@ class ClubForm(FlaskForm):
     description = TextAreaField('Description: ', validators=[DataRequired()])
     meeting_day = StringField('Meeting Day(s): ', validators=[DataRequired()])
     meeting_time = SelectField('Advisory, lunch, or after school:', choices=[('Advisory'), ('Lunch'), ('After School')])
-    meeting_place = StringField('Meeting Place', validators=[DataRequired()])
+    meeting_place = StringField('Club Meeting Place: ', validators=[DataRequired()])
     submit = SubmitField('Add club')
+
+class SportForm(FlaskForm):
+    name = StringField('Sport Name: ', validators=[DataRequired()])
+    coach = StringField('Coach: ',validators=[DataRequired()])
+    description = TextAreaField('Description: ', validators=[DataRequired()])
+    meeting_day = StringField('Meeting Day(s): ', validators=[DataRequired()])
+    meeting_time1 = IntegerField("Meeting Time", validators=[NumberRange(min=1,max=12, message="Enter a number between 1 and 12.")])
+    meeting_time2 = IntegerField(validators=[NumberRange(min=0,max=60, message="Enter a number between 0 and 60.")])
+    time_frame = SelectField(choices=[("AM"), ("PM")])

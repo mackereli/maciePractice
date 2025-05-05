@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <h1>Club Form</h1>
+    <h1>Add New Club</h1>
 
     <!-- List all errors in a group at the top -->
     {% for field in form.errors %}
@@ -62,13 +62,11 @@
 
         <!-- Meeting Place Field -->
         <label for="meeting_place">{{ form.meeting_place.label }}</label><br>
-        {{ form.meeting_place(size=64) }}
-        <!-- List the errors for this field -->
-        {% for error in form.meeting_place.errors %}
-            <span style="color:red;">[{{ error }}]</span>
+        {{ form.meeting_place() }}
+        <!--- List the errors for this field-->
+        {% for errors in form.meeting_place.errors %}
+            <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
-        <br><br>
-
         <!-- Submit Button -->
         <p>{{ form.submit() }}</p>
     </form>

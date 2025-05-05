@@ -24,6 +24,7 @@ copy this one and then edit it. -->
             {% for error in form.field.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
+            <br><br>
 
             {{form.submit()}}
         </form>

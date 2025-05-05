@@ -12,8 +12,10 @@
         <h1 class="display-5 fw-bold">{{club.name}}</h1> 
  </div>
 </div> </header>
+
     
     <p class="fs-3 text-break">
+
             Description: {{club.description}} <br>
             Club Advisor: {{club.advisor}} <br>
             Meeting Day(s): {{club.meeting_day}} <br>
@@ -27,6 +29,13 @@
             <a data-toggle="tooltip" data-placement="top" title="Edit Club" href="/club/edit/{{club.id}}">
                 <img width="40" class="bottom-image" src="/static/edit.png">
             </a>
-            {% endif %}
+            {% if not is_member %}
+        <form action="{{ url_for('joinClub', clubID=club.id) }}" method="post">
+            <button type="submit">Join Club</button>
+        </form>
+        {% else %}
+        <p>You are already a member of this club.</p>
+        {% endif %}
+    {% endif %}
 {% endif %}
 {% endblock %}
