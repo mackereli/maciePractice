@@ -70,5 +70,7 @@ class SportForm(FlaskForm):
     description = TextAreaField('Description: ', validators=[DataRequired()])
     meeting_day = StringField('Meeting Day(s): ', validators=[DataRequired()])
     meeting_time1 = IntegerField("Meeting Time", validators=[NumberRange(min=1,max=12, message="Enter a number between 1 and 12.")])
-    meeting_time2 = IntegerField(validators=[NumberRange(min=0,max=60, message="Enter a number between 0 and 60.")])
+    meeting_time2 = IntegerField(validators=[NumberRange(min=0,max=59, message="Enter a number between 0 and 60.")])
+    meeting_place = StringField("Sport Meeting Place: ", validators=[DataRequired()])
     time_frame = SelectField(choices=[("AM"), ("PM")])
+    submit = SubmitField('Add sport')

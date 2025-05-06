@@ -1,0 +1,38 @@
+<!-- This is a blank template.  You can copy this to make a new template page. -->
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if sport %}
+
+
+<header class="bg-info text-white bg-opacity-50 p-2 py-5 mb-5 shadow-sm rounded-bottom"><div class="row">
+    <div class="col-4 container text-center"> 
+        <h1 class="display-5 fw-bold">{{sport.name}}</h1> 
+ </div>
+</div> </header>
+
+    
+    <p class="fs-3 text-break">
+
+            Description: {{sport.description}} <br>
+            Sport Coach: {{sport.coach}} <br>
+            Meeting Day(s): {{sport.meeting_day}} <br>
+            {% if sport.meeting_time2 < 10 %}
+            Meeting Time: {{sport.meeting_time1}}:0{{sport.meeting_time2}}{{sport.time_frame}} <br>
+            {% else %}
+            Meeting Time: {{sport.meeting_time1}}:{{sport.meeting_time2}}{{sport.time_frame}} <br>
+            {% endif %}
+            Meeting Place: {{sport.meeting_place}} <br>
+
+            {% if sport.author == current_user %}
+            <a data-toggle="tooltip" data-placement="top" title="Delete Sport" href="/sport/delete/{{sport.id}}">
+                <img width="40" class="bottom-image" src="/static/delete.png">
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit Sport" href="/sport/edit/{{sport.id}}">
+                <img width="40" class="bottom-image" src="/static/edit.png">
+            </a>
+    {% endif %}
+{% endif %}
+{% endblock %}

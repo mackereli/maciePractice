@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <h1>Add New Club</h1>
+    <h1>Add New Sport</h1>
 
     <!-- List all errors in a group at the top -->
     {% for field in form.errors %}
@@ -15,7 +15,7 @@
     <form method="POST">
         {{ form.hidden_tag() }}
 
-        <!-- Club Name Field -->
+        <!-- Sport Name Field -->
         <label for="name">{{ form.name.label }}</label><br>
         {{ form.name(size=64) }}
         <!-- List the errors for this field -->
@@ -24,11 +24,11 @@
         {% endfor %}
         <br><br>
 
-        <!-- Advisor Field -->
-        <label for="advisor">{{ form.advisor.label }}</label><br>
-        {{ form.advisor(size=64) }}
+        <!-- Coach Field -->
+        <label for="coach">{{ form.coach.label }}</label><br>
+        {{ form.coach(size=64) }}
         <!-- List the errors for this field -->
-        {% for error in form.advisor.errors %}
+        {% for error in form.coach.errors %}
             <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
         <br><br>
@@ -51,23 +51,24 @@
         {% endfor %}
         <br><br>
 
-        <!-- Meeting Time Field -->
-        <label for="meeting_time">{{ form.meeting_time.label }}</label><br>
-        {{ form.meeting_time() }}
+        <!-- Meeting Time1 Field -->
+        <label for="meeting_time">{{ form.meeting_time1.label }}</label><br>
+        {{ form.meeting_time1() }} : {{ form.meeting_time2()}}{{ form.time_frame}}
         <!-- List the errors for this field -->
-        {% for error in form.meeting_time.errors %}
+        {% for error in form.meeting_time1.errors %}
             <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
         <br><br>
 
         <!-- Meeting Place Field -->
         <label for="meeting_place">{{ form.meeting_place.label }}</label><br>
-        {{ form.meeting_place() }}
-        <!--- List the errors for this field-->
+        {{ form.meeting_place()}}
+        <!--List the errors for this field-->
         {% for errors in form.meeting_place.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <span style="color: red;"> [{{ error }}]</span>
         {% endfor %}
         <br><br>
+
         <!-- Submit Button -->
         <p>{{ form.submit() }}</p>
     </form>

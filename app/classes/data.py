@@ -154,6 +154,7 @@ class Sport(Document):
     meeting_day = StringField()
     meeting_time1 = IntField()
     meeting_time2 = IntField()
+    meeting_place = StringField()
     time_frame = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()

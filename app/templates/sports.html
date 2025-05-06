@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<header class="bg-info text-white bg-opacity-50 p-2 py-5 mb-5 shadow-sm rounded-bottom"><div class="row">
+    <div class="col-4 container text-center">
+        <h1 class="display-1 fw-bold ">All Sports</h1>
+
+    </div>
+</div></header>
+
+
+{% if sports %}
+    {% for sport in sports %}
+        <div class="row border-bottom">
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5 fw-bold">Date</h3>
+                {% endif %}
+
+                <a href="/sport/{{sport.id}}">
+                    {{moment(sport.create_date).calendar()}}
+                </a>
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5 fw-bold">User</h3>
+                {% endif %}
+                {{sport.author.fname}} {{sport.author.lname}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5 fw-bold">Name</h3>
+                {% endif %}
+                {{sport.name}}
+            </div>
+            <div class = "col">
+                {% if loop.index == 1 %}
+                <h3 class="display-5 fw-bold">Day</h3>
+                {% endif %}
+                {{sport.meeting_day}}
+            </div>
+            <div class = "col">
+                {% if loop.index == 1 %}
+                <h3 class="display-5 fw-bold">Time</h3>
+                {% endif %}
+                {% if sport.meeting_time2 < 10 %}
+                {{sport.meeting_time1}}:0{{sport.meeting_time2}}{{sport.time_frame}}
+                {% else %}
+                {{sport.meeting_time1}}:{{sport.meeting_time2}}{{sport.time_frame}}
+                {% endif %}
+            </div>
+            <div class = "col">
+                {% if loop.index == 1 %}
+                <h3 class="display-5 fw-bold">Place</h3>
+                {% endif %}
+                {{sport.meeting_place}}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <h1>No Sports</h1>
+{% endif %}
+
+{% endblock %}
